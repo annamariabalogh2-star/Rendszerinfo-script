@@ -1,8 +1,8 @@
-# Rendszerinformációs shell script és bemutató weboldal
+# Rendszerfigyelő és karbantartó shell script és bemutató weboldal
 
 ## Projekt leírása
 
-A projekt célja egy Linux operációs rendszer alatt futó, menüvezérelt shell script elkészítése, amely különböző rendszerinformációkat jelenít meg a felhasználó számára.
+A projekt célja egy Linux operációs rendszer alatt futó, menüvezérelt shell script elkészítése, amely rendszerinformációk megjelenítésére, valamint alapvető ellenőrzési és karbantartási feladatok elvégzésére szolgál.
 
 A script működését egy statikus, reszponzív weboldal mutatja be, amely HTML és CSS segítségével készült.
 
@@ -10,20 +10,36 @@ A script működését egy statikus, reszponzív weboldal mutatja be, amely HTML
 
 ## Shell script funkciók
 
-A script egy menü segítségével az alábbi információkat jeleníti meg:
+A script egy menü segítségével az alábbi funkciókat biztosítja:
 
-- CPU információk (`lscpu`)
-- Memória adatok (`free -h`)
-- Lemezhasználat (`df -h`)
-- Aktuális felhasználó (`whoami`)
-- Dátum és idő (`date`)
-- Rendszer uptime (`uptime`)
+### Információ lekérdezés
+
+- CPU információk megjelenítése
+- Memória adatok lekérdezése
+- Lemezhasználat megjelenítése
+- Aktuális felhasználó kiírása
+- Dátum és idő megjelenítése
+- Rendszer uptime megjelenítése
+
+### Ellenőrző funkciók
+
+- Lemezhasználat ellenőrzése (figyelmeztetés magas használat esetén)
+- Memória állapot megjelenítése
+- Összetett rendszerállapot ellenőrzés
+
+---
+
+## A program működése
+
+A script indítás után egy menüt jelenít meg, ahol a felhasználó kiválaszthatja a kívánt műveletet.
 
 A program:
 - függvényeket használ
 - `while` ciklusban fut
 - `case` szerkezettel kezeli a menüt
 - felhasználói bemenetet kér be
+
+A script minden művelet után visszatér a főmenübe, így folyamatosan használható.
 
 ---
 
@@ -32,10 +48,11 @@ A program:
 A projekt tartalmaz egy statikus weboldalt, amely bemutatja a script működését.
 
 ### Tartalom:
+
 - projekt ismertetése
-- funkciók listája
+- funkciók bemutatása
 - működés leírása
-- képernyőkép a program futásáról
+- képernyőképek a program futásáról
 - script letöltési lehetőség
 
 ---
@@ -49,6 +66,7 @@ A weboldal reszponzív, azaz különböző képernyőméreteken is megfelelően 
 - asztali számítógépen
 
 A reszponzivitás megvalósítása:
+
 - `meta viewport` használatával
 - rugalmas szélességekkel (`max-width`)
 - CSS media query alkalmazásával
@@ -70,7 +88,10 @@ weboldal/
 - index.html
 - style.css
 - rendszerinfo.sh
-- kep.png
+- kepek/
+  - menu.png
+  - lemez.png
+  - rendszer.png
 
 ---
 
@@ -78,22 +99,9 @@ weboldal/
 
 Linux alatt:
 
-- chmod +x rendszerinfo.sh
-- ./rendszerinfo.sh
-
----
-
-## Használat
-
-A weboldalon található "Script letöltése" gomb segítségével a felhasználó letöltheti a `.sh` fájlt, majd saját Linux környezetében futtathatja azt.
-
----
-
-## Képernyőkép
-
-A weboldal tartalmaz egy képernyőképet a program futás közbeni állapotáról.
-
----
+```bash
+chmod +x rendszerinfo.sh
+./rendszerinfo.sh
 
 ## Készítette
 

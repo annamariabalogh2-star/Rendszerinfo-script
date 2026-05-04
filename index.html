@@ -3,53 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rendszerinformációs script</title>
+    <title>Rendszerfigyelő és karbantartó script</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Rendszerinformációs shell script</h1>
-        <p>
-            Ez a program egy Linux alatt futó shell script, amely különböző
-            rendszerinformációkat jelenít meg egy menü segítségével.
-        </p>
+<div class="container">
 
-        <h2>Funkciók</h2>
-        <ul>
-            <li>CPU információk</li>
-            <li>Memória adatok</li>
-            <li>Lemezhasználat</li>
-            <li>Felhasználó</li>
-            <li>Dátum és idő</li>
-            <li>Uptime</li>
-        </ul>
+    <h1>Rendszerfigyelő és karbantartó shell script</h1>
 
-        <h2>Működés</h2>
-        <p>
-            A program egy menüt jelenít meg, ahol a felhasználó kiválaszthatja,
-            hogy milyen információt szeretne megtekinteni.
-        </p>
+    <p>
+        Ez a program egy Linux alatt futó, menüvezérelt shell script, amely
+        rendszerinformációk megjelenítésére, valamint alapvető ellenőrzési és
+        karbantartási feladatok elvégzésére szolgál.
+    </p>
 
-        <h2>Képernyőkép</h2>
-        <p>
-            A program futás közben:
-        </p>
-        <div style="text-align:center;">
-            <img src="kep.png" alt="Program futás" style="width:60%; border-radius: 10px;">
-        </div>
+    <h2>Funkciók</h2>
+    <ul>
+        <li>CPU információk megjelenítése</li>
+        <li>Memória adatok lekérdezése</li>
+        <li>Lemezhasználat megjelenítése</li>
+        <li>Aktuális felhasználó kiírása</li>
+        <li>Dátum és idő megjelenítése</li>
+        <li>Rendszer uptime megjelenítése</li>
+    </ul>
 
+    <h2>Ellenőrző funkciók</h2>
+    <ul>
+        <li>Lemezhasználat ellenőrzése (figyelmeztetés magas használat esetén)</li>
+        <li>Memória állapot megjelenítése</li>
+        <li>Összetett rendszerállapot ellenőrzés</li>
+    </ul>
 
-        <h2>Letöltés</h2>
-        <p>
-            A script fájl letölthető innen:
-        </p>
-        <div class="download">
-            <a href="rendszerinfo.sh" download>Script letöltése</a>
-        </div>
+    <h2>Karbantartási funkciók</h2>
+    <ul>
+        <li>Ideiglenes fájlok törlése a /tmp mappából</li>
+    </ul>
 
+    <h2>Működés</h2>
+    <p>
+        A program indítás után egy menüt jelenít meg, ahol a felhasználó
+        kiválaszthatja a kívánt műveletet. A script minden művelet után
+        visszatér a főmenübe, így folyamatosan használható.
+    </p>
+
+    <h2>Képernyőképek</h2>
+
+    <p>Főmenü:</p>
+    <div style="text-align:center;">
+        <img src="menu.png" alt="Menü" style="width:60%; border-radius:10px;">
     </div>
+
+    <p>Lemez ellenőrzés példa:</p>
+    <div style="text-align:center;">
+        <img src="disk.png" alt="Lemez ellenőrzés" style="width:60%; border-radius:10px;">
+    </div>
+
+    <p>Rendszer állapot példa:</p>
+    <div style="text-align:center;">
+        <img src="system.png" alt="Rendszer állapot" style="width:60%; border-radius:10px;">
+    </div>
+
+    <h2>Technikai megvalósítás</h2>
+    <ul>
+        <li>Shell script (bash)</li>
+        <li>Függvények használata</li>
+        <li>Menüvezérelt működés (case szerkezet)</li>
+        <li>Feltételes elágazások (if)</li>
+    </ul>
+
+    <h2>Letöltés</h2>
+    <p>
+        A script fájl letölthető innen:
+    </p>
+
+    <div class="download">
+        <a href="rendszerinfo.sh" download="rendszerinfo.sh">Script letöltése</a>
+        <p>Ha nem töltődik le, jobb klikk → Link mentése másként</p>
+    </div>
+
+</div>
 
 </body>
 </html>

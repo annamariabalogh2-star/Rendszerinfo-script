@@ -1,8 +1,13 @@
 #!/bin/bash
 
-# =========================
-# Rendszerinformacios script
-# =========================
+# =================================================================
+# Nev: Balogh Annamaria
+# Neptun kod: DDC6TU
+# Tantárgy: BPI2226L Linux és shell programozás 
+# Feladat: Rendszerfigyelo es karbantarto script Nagy házi feladat.
+# ==================================================================
+
+# =========== Függvények ===========
 
 # CPU info
 cpu_info()
@@ -81,6 +86,7 @@ system_check()
     echo
     mem_check
 }
+
 # Log clean
 log_clean()
 {
@@ -99,11 +105,18 @@ log_clean()
 
 # ---- FŐPROGRAM ----
 
+# Végtelen ciklus a folyamatos működéshez
 while true
 do
+    # Képernyő törlése a jobb olvashatóságért
     clear
 
-    echo "===== RENDSZER MENU ====="
+    # Menü megjelenítése
+    echo "===== RENDSZERFIGYELO ES KARBANTARTO MENU ====="
+    echo
+    echo "------------------------------"
+    echo "Valassz egy menupontot (1-11):"
+    echo "------------------------------"
     echo
     echo "1 - CPU"
     echo "2 - Memoria"
@@ -115,11 +128,16 @@ do
     echo "8 - Memoria ellenorzes"
     echo "9 - Rendszer allapot"
     echo "10 - Log fajlok torlese"
+    echo
+    echo "------------------------------"
     echo "11 - Kilepes"
+    echo "------------------------------"
     echo
 
+    # Felhasználói választás bekérése
     read -p "Valasztas: " VAL
 
+    # Választás feldolgozása
     case $VAL in
         1) cpu_info ;;
         2) mem_info ;;
@@ -135,6 +153,14 @@ do
         *) echo "Hibas!" ;;
     esac
 
+    # Üres sor a jobb olvashatóságért
     echo
-    read -p "Enter..."
+
+    echo "------------------------------"
+    echo " Visszateres a menuhoz"
+    echo "------------------------------"
+
+    # Várakozás a felhasználó inputjára a folytatáshoz
+    read -p "Nyomj egy Entert a folytatashoz..."
+
 done

@@ -1,64 +1,125 @@
 #!/bin/bash
 
-# CPU információk kiírása
-cpu_info() {
+# =========================
+# Rendszerinformacios script
+# =========================
+
+# CPU info
+cpu_info()
+{
     echo "----- CPU informacio -----"
     lscpu
 }
 
-# Memória információk kiírása
-mem_info() {
+# Memoria info
+mem_info()
+{
     echo "----- Memoria informacio -----"
     free -h
 }
 
-# Lemezhasználat megjelenítése
-disk_info() {
+# Lemez info
+disk_info()
+{
     echo "----- Lemezhasznalat -----"
     df -h
 }
 
-# Aktuális felhasználó kiírása
-user_info() {
+# Felhasznalo
+user_info()
+{
     echo "----- Aktualis felhasznalo -----"
     whoami
 }
 
-# Dátum és idő megjelenítése
-date_info() {
+# Datum
+date_info()
+{
     echo "----- Datum es ido -----"
     date
 }
 
-# Rendszer futási ideje
-uptime_info() {
+# Uptime
+uptime_info()
+{
     echo "----- Uptime -----"
     uptime
 }
+# Disk check
+disk_check()
+{
+    echo "----- Lemez ellenorzes -----"
 
-# Végtelen ciklus a folyamatos működéshez
+    read FS SIZE USED AVAIL USE MOUNT <<< $(df / | tail -1)
+
+    USED=${USE%\%}
+
+    echo "Hasznalat: $USED %"
+
+    if [ $USED -gt 80 ]
+    then
+        echo "FIGYELEM! Majdnem tele a lemez!"
+    else
+        echo "Rendben."
+    fi
+}
+
+# Memoria info
+mem_check()
+{
+    echo "----- Memoria info -----"
+    free -h
+    echo "Ellenorizd a szabad memoriat!"
+}
+
+# System info
+system_check()
+{
+    echo "----- Rendszer allapot -----"
+
+    disk_check
+    echo
+    mem_check
+}
+# Log clean
+log_clean()
+{
+    echo "----- Log fajlok torlese -----"
+
+    read -p "Biztos torlod a tmp fajlokat? (i/n): " VAL
+
+    if [ "$VAL" = "i" ]
+    then
+        rm -f /tmp/*
+        echo "Torles kesz."
+    else
+        echo "Megszakitva."
+    fi
+}
+
+# ---- FŐPROGRAM ----
+
 while true
 do
-    # képernyő törlése
     clear
 
-    # Menü megjelenítése
-    echo "===== RENDSZERINFORMACIOS MENU ====="
-    echo 
-    echo "1 - CPU info"
-    echo "2 - Memoria info"
-    echo "3 - Lemezhasznalat"
-    echo "4 - Felhasznalo"
-    echo "5 - Datum es ido"
-    echo "6 - Uptime"
-    echo "7 - Kilepes"
+    echo "===== RENDSZER MENU ====="
     echo
-    echo "-----------------------------------"
+    echo "1 - CPU"
+    echo "2 - Memoria"
+    echo "3 - Lemez"
+    echo "4 - Felhasznalo"
+    echo "5 - Datum"
+    echo "6 - Uptime"
+    echo "7 - Lemez ellenorzes"
+    echo "8 - Memoria ellenorzes"
+    echo "9 - Rendszer allapot"
+    echo "10 - Log fajlok torlese"
+    echo "11 - Kilepes"
+    echo
 
-    # Felhasználói választás bekérése
     read -p "Valasztas: " VAL
 
-    # Választás feldolgozása
     case $VAL in
         1) cpu_info ;;
         2) mem_info ;;
@@ -66,13 +127,14 @@ do
         4) user_info ;;
         5) date_info ;;
         6) uptime_info ;;
-        7) exit ;;
-        *) echo "Hibas valasztas!" ;;
+        7) disk_check ;;
+        8) mem_check ;;
+        9) system_check ;;
+        10) log_clean ;;
+        11) exit ;;
+        *) echo "Hibas!" ;;
     esac
 
-    # Üres sor a jobb olvashatóságért
     echo
-
-    # Várakozás a felhasználóra
-    read -p "Nyomj entert a folytatashoz..."
+    read -p "Enter..."
 done
